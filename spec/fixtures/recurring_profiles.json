@@ -1,0 +1,28 @@
+[{
+  "recurring_profile": {
+                          "id":31,
+                          "created_at":"2010-09-19T19:01:03Z",
+                          "total_billed":"$150.00",
+                          "line_items":[{"price":"25.00","unit":null,"quantity":2.0,"sort_order":null,"id":5739,"total":"50.00","name_and_description":"This is a test item"}],
+                          "updated_at":"2010-09-19T19:01:03Z",
+                          "tax2_compound":null,
+                          "notes":null,
+                          "sub_total":"$150.00",
+                          "tax_amount":"$0.00",
+                          "payment_options":[""],
+                          "client":{"name":"Quigley-West","id":3512},
+                          "discount_amount":"$0.00",
+                          "tax2_amount":"$0.00",
+                          "total_due":"$150.00",
+                          "shipping_amount":"$0.00",
+                          "invoice_no":"TEST-1",
+                          "start_date":"2010-09-21",
+                          "save_as_draft":false,
+                          "next_billing_date":"2010-09-21",
+                          "payment_due_term":"Custom",
+                          "profile_name":"RP-Test",
+                          "iteration_no":2,
+                          "occurences":3,
+                          "frequency_term":"Daily"
+                        }
+}]
