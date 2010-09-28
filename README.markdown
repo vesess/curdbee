@@ -1,6 +1,6 @@
 # CurdBee
 
-Ruby wrapper for the CurdBee API. Through this library you can peform actions on following resources:
+Ruby wrapper for the CurdBee API. Through this library you can perform actions on following resources:
 
 * Invoices
 * Estimates
