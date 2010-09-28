@@ -12,6 +12,18 @@ Ruby wrapper for the CurdBee API. Through this library you can peform actions on
 ## Installation
 
 sudo gem install curdbee
+
+## Configuration 
+
+Before your code communicate with the CurdBee API, do the following:
+
+    require 'curdbee'
+
+    # set the API key and subdomain for your account.
+    CurdBee::Config.api_key = "Your API Key"
+    CurdBee::Config.subdomain = "Your Subdomain"
+
+To find your API Token, please login to your CurdBee account and visit Settings > Account Information
     
 ## Examples
 
