@@ -44,7 +44,7 @@ begin
   puts "Added the payment."
 
   # Send the invoice
-  if @invoice.deliver
+  if @invoice.deliver({'recipients' => [@client.email], 'blind_copy' => "me@example.com"})
     puts "Your invoice was successfully sent to the client."
     #reload the invoice
     @invoice = CurdBee::Invoice.show(@invoice.id)
