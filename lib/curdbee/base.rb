@@ -26,7 +26,7 @@ module CurdBee
       response = self.class.send_request(:post, "/#{self.class.resource}", :body => body)
 
       self.id = response["#{self.class.element}"]["id"]
-      return true if (response.code.to_i == 200)
+      return true if (response.code.to_i == 201)
     end
 
     def update
