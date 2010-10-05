@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{curdbee}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lakshan Perera"]
-  s.date = %q{2010-10-04}
+  s.date = %q{2010-10-05}
   s.email = %q{lakshan@vesess.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "curdbee.gemspec",
      "examples/create_invoice_for_new_client.rb",
+     "examples/list_invoices.rb",
      "lib/curdbee.rb",
      "lib/curdbee/base.rb",
      "lib/curdbee/client.rb",
@@ -78,7 +79,8 @@ Gem::Specification.new do |s|
      "spec/recurring_profile_spec.rb",
      "spec/spec_helper.rb",
      "spec/support/fakeweb_stubs.rb",
-     "examples/create_invoice_for_new_client.rb"
+     "examples/create_invoice_for_new_client.rb",
+     "examples/list_invoices.rb"
   ]
 
   if s.respond_to? :specification_version then
