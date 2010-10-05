@@ -69,7 +69,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
-  s.summary = %q{Ruby wrapper for the Chargify API}
+  s.summary = %q{Ruby wrapper for the CurdBee API}
   s.test_files = [
     "spec/client_spec.rb",
      "spec/estimate_spec.rb",

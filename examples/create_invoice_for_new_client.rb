@@ -31,6 +31,7 @@ begin
                                {:name_and_description => "Domain Registration", :quantity => 10, :price => 10.00, :unit => "domain"}
    ],
     :notes => "Please write a cheque in favour of MyCompany Inc."
+    :payment_options => ["paypal", "gcheckout", "twocheckout", "authorizenet"]
   )
   @invoice.create
 
