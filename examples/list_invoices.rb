@@ -6,8 +6,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'curdbee'
 
 # set the API key and subdomain for your account.
-CurdBee::Config.api_key = "QBikEJ1gATy_G4xHljs6"
-CurdBee::Config.subdomain = "laktek"
+CurdBee::Config.api_key = "Your API Key"
+CurdBee::Config.subdomain = "Your Subdomain"
 
 @invoices = CurdBee::Invoice.list
 

@@ -18,8 +18,8 @@ module CurdBee
      return true if response.code.to_i == 200
     end
 
-    def deliver(receivers={}) 
-     body = receivers.to_json
+    def deliver(send_list={}) 
+     body = {:delivery => send_list}.to_json
      response = self.class.send_request(:post, "/deliver/#{self.class.element}/#{self[:id]}", :body => body)
      return true if response.code.to_i == 200
     end
