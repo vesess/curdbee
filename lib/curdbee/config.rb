@@ -3,7 +3,7 @@ module CurdBee
 
     @@api_key = "your_api_key"
     @@subdomain = "subdomain"
-    @@use_https = false
+    @@use_https = true 
 
     def self.api_key=(api_key)
       @@api_key = api_key
