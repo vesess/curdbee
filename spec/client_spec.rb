@@ -10,19 +10,19 @@ describe CurdBee::Client do
     end
 
     it "should return a list of clients" do
-      stub_get "http://test.curdbee.com/clients.json?api_token=TYMuwW6rM2PQnoWx1ht4&page=1&per_page=20", "clients.json"
+      stub_get "https://test.curdbee.com/clients.json?api_token=TYMuwW6rM2PQnoWx1ht4&page=1&per_page=20", "clients.json"
       result = CurdBee::Client.list
       result.first.name.should == "Awesome Inc." 
     end
 
     it "should take limit as an option" do
-      stub_get "http://test.curdbee.com/clients.json?api_token=TYMuwW6rM2PQnoWx1ht4&page=1&per_page=1", "clients.json"
+      stub_get "https://test.curdbee.com/clients.json?api_token=TYMuwW6rM2PQnoWx1ht4&page=1&per_page=1", "clients.json"
       result = CurdBee::Client.list(:limit => 1)
       result.length.should == 1 
     end
 
     it "should take page as an option" do
-      stub_get "http://test.curdbee.com/clients.json?api_token=TYMuwW6rM2PQnoWx1ht4&page=2&per_page=1", "clients.json"
+      stub_get "https://test.curdbee.com/clients.json?api_token=TYMuwW6rM2PQnoWx1ht4&page=2&per_page=1", "clients.json"
       result = CurdBee::Client.list(:limit => 1, :page => 2)
       result.length.should == 1 
     end
@@ -37,13 +37,13 @@ describe CurdBee::Client do
     end
    
     it "should return the matching client" do
-      stub_get "http://test.curdbee.com/clients/31.json?api_token=TYMuwW6rM2PQnoWx1ht4", "client.json"
+      stub_get "https://test.curdbee.com/clients/31.json?api_token=TYMuwW6rM2PQnoWx1ht4", "client.json"
       result = CurdBee::Client.show(31)
       result.name.should == "Awesome Inc." 
     end
 
     it "should raise an error if nothing found" do
-      stub_get "http://test.curdbee.com/clients/32.json?api_token=TYMuwW6rM2PQnoWx1ht4", "", 404
+      stub_get "https://test.curdbee.com/clients/32.json?api_token=TYMuwW6rM2PQnoWx1ht4", "", 404
       lambda{
         CurdBee::Client.show(32)
       }.should raise_error(CurdBee::Error::NotFound)
@@ -59,7 +59,7 @@ describe CurdBee::Client do
     end
    
     it "should return the created client" do
-      stub_post "http://test.curdbee.com/clients?api_token=TYMuwW6rM2PQnoWx1ht4", "new_client.json"
+      stub_post "https://test.curdbee.com/clients?api_token=TYMuwW6rM2PQnoWx1ht4", "new_client.json"
       @client = CurdBee::Client.new(
                                       :name => "RickRoll Inc.",
                                       :email => "rickroll@example.com",
@@ -70,7 +70,7 @@ describe CurdBee::Client do
     end
 
     it "should raise an error if creation fails" do
-      stub_post "http://test.curdbee.com/clients?api_token=TYMuwW6rM2PQnoWx1ht4", "", 422
+      stub_post "https://test.curdbee.com/clients?api_token=TYMuwW6rM2PQnoWx1ht4", "", 422
       lambda{
         @client = CurdBee::Client.new()
         @client.create
@@ -85,12 +85,19 @@ describe CurdBee::Client do
     before do
       CurdBee::Config.api_key = "TYMuwW6rM2PQnoWx1ht4"
       CurdBee::Config.subdomain = "test"
-      stub_get "http://test.curdbee.com/clients/31.json?api_token=TYMuwW6rM2PQnoWx1ht4", "client.json"
+      stub_get "https://test.curdbee.com/clients/31.json?api_token=TYMuwW6rM2PQnoWx1ht4", "client.json"
       @client = CurdBee::Client.show(31)
+    end
+
+    it "should be possible to pass update params to the method" do
+      stub_put "https://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "new_client.json"
+
+      result = @client.update({:name => "RickRoll Inc.", :email => "rickroll@example.com"})
+      result.should be_true
     end
    
     it "should return the updated client" do
-      stub_put "http://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "new_client.json"
+      stub_put "https://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "new_client.json"
       @client.name = "RickRoll Inc."
       @client.email = "rickroll@example.com"
 
@@ -99,13 +106,12 @@ describe CurdBee::Client do
     end
 
     it "should raise an error if update fails" do
-      stub_put "http://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 422
+      stub_put "https://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 422
       lambda{
         @client.name = ""
         @client.update
       }.should raise_error(CurdBee::Error::BadRequest)
     end
-
 
   end
 
@@ -114,25 +120,25 @@ describe CurdBee::Client do
     before do
       CurdBee::Config.api_key = "TYMuwW6rM2PQnoWx1ht4"
       CurdBee::Config.subdomain = "test"
-      stub_get "http://test.curdbee.com/clients/31.json?api_token=TYMuwW6rM2PQnoWx1ht4", "client.json"
+      stub_get "https://test.curdbee.com/clients/31.json?api_token=TYMuwW6rM2PQnoWx1ht4", "client.json"
       @client = CurdBee::Client.show(31)
     end
    
     it "should return true if client was deleted" do
-      stub_delete "http://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 200
+      stub_delete "https://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 200
       result = @client.delete
       result.should == true 
     end
 
     it "should raise a bad request error if deletion fails" do
-      stub_delete "http://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 422
+      stub_delete "https://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 422
       lambda{
         @client.delete
       }.should raise_error(CurdBee::Error::BadRequest)
     end
 
     it "should raise a not found error if client doesnt exist" do
-      stub_delete "http://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 404
+      stub_delete "https://test.curdbee.com/clients/31?api_token=TYMuwW6rM2PQnoWx1ht4", "", 404
       lambda{
         @client.delete
       }.should raise_error(CurdBee::Error::NotFound)

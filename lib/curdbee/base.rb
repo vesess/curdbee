@@ -29,8 +29,8 @@ module CurdBee
       return true if (response.code.to_i == 201)
     end
 
-    def update
-      body = {"#{self.class.element}" => self}.to_json
+    def update(attrs=nil)
+      body = {"#{self.class.element}" => (attrs || self)}.to_json
       response = self.class.send_request(:put, "/#{self.class.resource}/#{self[:id]}", :body => body)
       #Hashie::Mash.new(response["#{@element}"])
       return true if (response.code.to_i == 200)
