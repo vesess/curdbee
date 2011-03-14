@@ -62,7 +62,7 @@ module CurdBee
       when 403
         raise(CurdBee::Error::Forbidden.new(response), "Your action was forbidden.")
       when 422
-        raise(CurdBee::Error::BadRequest.new(response), JSON.parse(response.body).join(" "))
+        raise(CurdBee::Error::BadRequest.new(response), (response.body ? JSON.parse(response.body).join(" ") : "") )
       when 404
         raise(CurdBee::Error::NotFound.new(response), "Resource not found.")
       when 500
