@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler'
 require 'logger'
-require 'spec'
+require 'rspec'
 
 Bundler.require(:default, :runtime, :test)
 $LOAD_PATH.unshift(File.dirname(__FILE__))

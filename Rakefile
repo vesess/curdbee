@@ -8,10 +8,6 @@ begin
     gem.email = "lakshan@vesess.com"
     gem.homepage = "http://github.com/vesess/curdbee"
     gem.authors = ["Lakshan Perera"]
-
-    gem.add_dependency('httparty', '~> 0.5.2')
-    gem.add_dependency('hashie', '~> 0.1.8')
-    gem.add_dependency('json')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

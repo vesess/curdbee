@@ -1,3 +1,5 @@
+require 'crack'
+
 module CurdBee
   class Parser < HTTParty::Parser
 
