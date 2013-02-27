@@ -62,7 +62,6 @@ describe CurdBee::Invoice do
       invoice_info = {:date => Date.today, :invoice_no => "IN-NEW", :client_id => @client.id,
                       :line_items_attributes => [{:name_and_description => "Sample Item", :quantity => 1, :price => 25.00, :unit => "hour"}]
                      }
-      puts invoice_info.to_xml(:root => 'invoice')
       @invoice = CurdBee::Invoice.new(invoice_info)
       result = @invoice.create
       @invoice.id.should == 32 
