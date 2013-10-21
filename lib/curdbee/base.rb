@@ -47,7 +47,7 @@ module CurdBee
       use_https = CurdBee::Config.use_https
       scheme = use_https ? "https" : "http"
  
-      self.base_uri "#{scheme}://#{subdomain}.orete.com"#FIXME
+      self.base_uri "#{scheme}://#{subdomain}.curdbee.com"
 
       opts[:query] = opts.has_key?(:query) ? opts[:query].merge({'api_token' => api_key}) : {'api_token' => api_key}
       begin
