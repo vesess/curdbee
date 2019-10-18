@@ -12,5 +12,5 @@ group :test do
   gem 'rake'
   gem 'fakeweb',  '>= 1.2.8'
   gem 'rspec',    '>= 1.3.0 '
-  gem 'activesupport', '~> 2.3.5',  :require => 'active_support'
+  gem 'activesupport', '~> 6.0.0',  :require => 'active_support'
 end
